@@ -2,8 +2,11 @@ package principale;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import traitements.cls_traitement;
 
 public class Login extends javax.swing.JFrame {
+
+    traitements.cls_traitement t = new cls_traitement();
 
     public Login() {
         initComponents();
@@ -131,6 +134,11 @@ public class Login extends javax.swing.JFrame {
         cls_myBouton1.setText("Connexion");
         cls_myBouton1.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
         cls_myBouton1.setRadius(20);
+        cls_myBouton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cls_myBouton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(cls_myBouton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, 140, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 21, -1, 300));
@@ -210,7 +218,7 @@ public class Login extends javax.swing.JFrame {
 
     private void passKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-//            us.user(user, pass, this);
+            t.user(user, pass, this);
         }
     }//GEN-LAST:event_passKeyPressed
 
@@ -233,6 +241,10 @@ public class Login extends javax.swing.JFrame {
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void cls_myBouton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cls_myBouton1ActionPerformed
+        t.user(user, pass, this);
+    }//GEN-LAST:event_cls_myBouton1ActionPerformed
 
     /**
      * @param args the command line arguments

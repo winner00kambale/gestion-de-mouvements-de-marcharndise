@@ -7,7 +7,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.LayoutManager;
 import java.awt.RenderingHints;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import principale.Login;
 
 
 public class DashBorad extends javax.swing.JPanel {
@@ -43,7 +45,7 @@ public class DashBorad extends javax.swing.JPanel {
 
         titre.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
         titre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(titre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 630, 50));
+        jPanel2.add(titre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 590, 50));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_menu_vertical_32.png"))); // NOI18N
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 20, 50));

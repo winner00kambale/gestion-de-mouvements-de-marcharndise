@@ -64,6 +64,7 @@ public class frm_client extends javax.swing.JPanel {
         jLabel4.setText("PostNom Client ");
 
         nom.setFont(new java.awt.Font("Century", 0, 12)); // NOI18N
+        nom.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         nom.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         nom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +73,7 @@ public class frm_client extends javax.swing.JPanel {
         });
 
         post.setFont(new java.awt.Font("Century", 0, 12)); // NOI18N
+        post.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         post.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         post.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +86,7 @@ public class frm_client extends javax.swing.JPanel {
         jLabel5.setText("PreNom Client ");
 
         prenom.setFont(new java.awt.Font("Century", 0, 12)); // NOI18N
+        prenom.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         prenom.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         prenom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,6 +113,7 @@ public class frm_client extends javax.swing.JPanel {
         jScrollPane1.setViewportView(client);
 
         adresse.setFont(new java.awt.Font("Century", 0, 12)); // NOI18N
+        adresse.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         adresse.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         adresse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +130,7 @@ public class frm_client extends javax.swing.JPanel {
         jLabel7.setText("Telephone Client. +243 ...");
 
         tel.setFont(new java.awt.Font("Century", 0, 12)); // NOI18N
+        tel.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         tel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

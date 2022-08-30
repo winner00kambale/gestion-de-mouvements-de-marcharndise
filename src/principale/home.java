@@ -1,6 +1,7 @@
 package principale;
 
 import dialogues.frm_destination;
+import dialogues.frm_user;
 import frm_secondaires.DashBorad;
 import frm_secondaires.frm_client;
 import frm_secondaires.frm_depot;
@@ -12,6 +13,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.LayoutManager;
 import java.awt.RenderingHints;
+import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import traitements.cls_traitement;
 
@@ -22,6 +25,8 @@ public class home extends javax.swing.JFrame {
     public home() {
         initComponents();
         t.appel(new DashBorad(), pan);
+        setIconImage();
+        t.heureDate(heure);
     }
 
     @SuppressWarnings("unchecked")
@@ -39,11 +44,15 @@ public class home extends javax.swing.JFrame {
         cls_myBouton6 = new traitements.cls_myBouton();
         jLabel1 = new javax.swing.JLabel();
         cls_myBouton7 = new traitements.cls_myBouton();
+        jLabel2 = new javax.swing.JLabel();
+        texte = new javax.swing.JLabel();
+        heure = new javax.swing.JLabel();
         pan = new RoundedPanel(50, Color.WHITE);
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         jMenu3.setText("jMenu3");
@@ -108,6 +117,33 @@ public class home extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Sécurisée par le compte :");
+
+        texte.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
+        texte.setForeground(new java.awt.Color(255, 51, 51));
+        texte.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        texte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Male_User_32.png"))); // NOI18N
+        texte.setText("Winnner");
+        texte.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
+        texte.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        texte.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                texteMouseClicked(evt);
+            }
+        });
+
+        heure.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
+        heure.setForeground(new java.awt.Color(255, 255, 255));
+        heure.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        heure.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                heureMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -116,13 +152,16 @@ public class home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cls_myBouton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cls_myBouton4, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                    .addComponent(cls_myBouton5, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                    .addComponent(cls_myBouton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                    .addComponent(cls_myBouton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cls_myBouton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cls_myBouton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(9, 9, 9))
-                    .addComponent(cls_myBouton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))
+                    .addComponent(cls_myBouton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                    .addComponent(texte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(heure, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -140,7 +179,13 @@ public class home extends javax.swing.JFrame {
                 .addComponent(cls_myBouton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cls_myBouton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(208, 208, 208))
+                .addGap(30, 30, 30)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(texte, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(heure, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53))
         );
 
         pan.setBackground(new java.awt.Color(41, 55, 72));
@@ -181,6 +226,17 @@ public class home extends javax.swing.JFrame {
 
         jMenu6.setText("Paramettres");
         jMenu6.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
+
+        jMenuItem2.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Male_User_32.png"))); // NOI18N
+        jMenuItem2.setText("Utilisateurs");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem2);
+
         jMenuBar1.add(jMenu6);
 
         jMenu2.setText("Fichier");
@@ -217,7 +273,7 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_cls_myBouton5ActionPerformed
 
     private void cls_myBouton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cls_myBouton6ActionPerformed
-       t.appel(new DashBorad(), pan);
+        t.appel(new DashBorad(), pan);
     }//GEN-LAST:event_cls_myBouton6ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -225,8 +281,24 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void cls_myBouton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cls_myBouton7ActionPerformed
-       t.appel(new frm_depot(), pan);
+        t.appel(new frm_depot(), pan);
     }//GEN-LAST:event_cls_myBouton7ActionPerformed
+
+    private void texteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_texteMouseClicked
+        if (JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment vous deconnecter???", "deconnexion", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+            Login l= new Login();
+            l.show();
+            this.dispose();
+        }
+    }//GEN-LAST:event_texteMouseClicked
+
+    private void heureMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_heureMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_heureMouseClicked
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        new frm_user(this, true).show();        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,6 +335,10 @@ public class home extends javax.swing.JFrame {
         });
     }
 
+    private void setIconImage() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icons8_hospital_64.png")));
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private traitements.cls_myBouton cls_myBouton1;
     private traitements.cls_myBouton cls_myBouton2;
@@ -271,16 +347,20 @@ public class home extends javax.swing.JFrame {
     private traitements.cls_myBouton cls_myBouton5;
     private traitements.cls_myBouton cls_myBouton6;
     private traitements.cls_myBouton cls_myBouton7;
+    private javax.swing.JLabel heure;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel pan;
+    public static javax.swing.JLabel texte;
     // End of variables declaration//GEN-END:variables
 class RoundedPanel extends JPanel {
 

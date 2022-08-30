@@ -7,20 +7,31 @@ import java.awt.Rectangle;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import static java.lang.Thread.sleep;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import net.proteanit.sql.DbUtils;
+import principale.Login;
+import principale.home;
+import static principale.home.texte;
+
 
 public class cls_traitement {
 
@@ -328,6 +339,97 @@ public class cls_traitement {
             }
         } catch (Exception e) {
             System.out.println("erreur" + e);
+        }
+    }
+    public void user(JTextField nom, JPasswordField pass, JFrame frm_connexion) {
+        try {
+            con = DriverManager.getConnection(connexion.cls_connexion.getconnexion());
+            ps = con.prepareStatement("select * from tuser where email='" + nom.getText() + "'  and passwords ='" + pass.getText() + "'");
+            rs = ps.executeQuery();
+            if(rs.next()){
+                if("Admin".equalsIgnoreCase(rs.getString("niveau"))){
+                     home h = new home();
+                    frm_connexion.hide();
+                    h.show();
+                    texte.setText(rs.getString("email"));
+                }
+            }else{
+                Login.lbltext.setText("Vérifier votre Email et PassWord");
+            }
+        } catch (Exception e) {
+        }
+    }
+    public void insertUser(JLabel id,JTextField mail,JTextField pass,JComboBox niveau){
+        try {
+            con = DriverManager.getConnection(connexion.cls_connexion.getconnexion());
+            ps = con.prepareStatement("exec sp_user ?,?,?,?");
+            ps.setString(1, id.getText());
+            ps.setString(2, mail.getText().trim());
+            ps.setString(3, pass.getText().trim());
+            ps.setString(4, niveau.getSelectedItem().toString());
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Operation reussi avec succes");
+            id.setText("");
+            mail.setText("");
+            pass.setText("");
+        } catch (Exception e) {
+            System.out.println("erreur" + e);
+        }
+    }
+    
+    public void selectUser(JTable tab,JLabel id,JTextField mail,JTextField pass,JComboBox niveau){
+        try {
+            int sel = tab.getSelectedRow();
+            String model = tab.getModel().getValueAt(sel, 0).toString();
+            con = DriverManager.getConnection(connexion.cls_connexion.getconnexion());
+            ps = con.prepareStatement("select * from tuser where id ='" + model + "' ");
+            rs = ps.executeQuery();
+            while(rs.next()){
+                id.setText(rs.getString("id"));
+                mail.setText(rs.getString("email"));
+                pass.setText(rs.getString("passwords"));
+                niveau.setSelectedItem(rs.getString("niveau"));
+            }
+        } catch (Exception e) {
+            System.out.println("erreur" + e);
+        }
+    }
+    public void delete(JLabel id){
+        try {
+            con = DriverManager.getConnection(connexion.cls_connexion.getconnexion());
+            ps = con.prepareStatement("delete from tuser where id=?");
+            ps.setString(1, id.getText());
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Supprimer avec succes");
+        } catch (Exception e) {
+            System.out.println("erreur" + e);
+        }
+    }
+    
+    public void heureDate(JLabel l) {
+        try {
+            Thread clock = new Thread() {
+                public void run() {
+                    for (;;) {
+                        Calendar cal = new GregorianCalendar();
+                        int seconde = cal.get(Calendar.SECOND);
+                        int minute = cal.get(Calendar.MINUTE);
+                        int heure = cal.get(Calendar.HOUR_OF_DAY);
+                        int jour = cal.get(Calendar.DAY_OF_MONTH);
+                        int mois = cal.get(Calendar.MONTH);
+                        int annee = cal.get(Calendar.YEAR);
+                        l.setText(" Il est  " + heure + "h" + (minute) + " min " + seconde + " sec ");
+//                        l2.setText("Goma   Le " + jour + "/" + (mois+1) + "/" + annee);
+                        try {
+                            sleep(1000);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(Calendar.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                }
+            };
+            clock.start();
+        } catch (Exception e) {
         }
     }
 

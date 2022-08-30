@@ -14,9 +14,9 @@ public class cls_myBouton extends JButton{
      public cls_myBouton() {
         //initialisation des couleurs
         setColor(Color.WHITE);
-        colorOver=new Color(0,120,215);
+        colorOver=new Color(152, 184, 144);
         collorclic=new Color(152, 184, 144);
-        collorboder=new Color(30, 136, 56);
+        collorboder=new Color(41, 55, 72); 
         color=new Color(0,51,51);
         
         setContentAreaFilled(false);

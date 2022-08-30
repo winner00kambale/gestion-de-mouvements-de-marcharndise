@@ -1,6 +1,11 @@
 package principale;
 
+import dialogues.frm_destination;
+import frm_secondaires.DashBorad;
 import frm_secondaires.frm_client;
+import frm_secondaires.frm_depot;
+import frm_secondaires.frm_marcharndise;
+import frm_secondaires.frm_payement;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -16,6 +21,7 @@ public class home extends javax.swing.JFrame {
 
     public home() {
         initComponents();
+        t.appel(new DashBorad(), pan);
     }
 
     @SuppressWarnings("unchecked")
@@ -30,44 +36,75 @@ public class home extends javax.swing.JFrame {
         cls_myBouton3 = new traitements.cls_myBouton();
         cls_myBouton4 = new traitements.cls_myBouton();
         cls_myBouton5 = new traitements.cls_myBouton();
+        cls_myBouton6 = new traitements.cls_myBouton();
+        jLabel1 = new javax.swing.JLabel();
+        cls_myBouton7 = new traitements.cls_myBouton();
         pan = new RoundedPanel(50, Color.WHITE);
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
 
         jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(0, 120, 215));
+        jPanel2.setBackground(new java.awt.Color(41, 55, 72));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(41, 55, 72));
 
+        cls_myBouton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_add_user_group_man_man_32.png"))); // NOI18N
         cls_myBouton3.setText("Reception");
         cls_myBouton3.setFont(new java.awt.Font("Century", 0, 16)); // NOI18N
+        cls_myBouton3.setRadius(20);
         cls_myBouton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cls_myBouton3ActionPerformed(evt);
             }
         });
 
-        cls_myBouton4.setText("Reception");
+        cls_myBouton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_send_comment_32.png"))); // NOI18N
+        cls_myBouton4.setText("Expédition");
         cls_myBouton4.setFont(new java.awt.Font("Century", 0, 16)); // NOI18N
+        cls_myBouton4.setRadius(20);
         cls_myBouton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cls_myBouton4ActionPerformed(evt);
             }
         });
 
-        cls_myBouton5.setText("Reception");
+        cls_myBouton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_money_bag_32.png"))); // NOI18N
+        cls_myBouton5.setText("Payement");
         cls_myBouton5.setFont(new java.awt.Font("Century", 0, 16)); // NOI18N
+        cls_myBouton5.setRadius(20);
         cls_myBouton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cls_myBouton5ActionPerformed(evt);
+            }
+        });
+
+        cls_myBouton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_home_32.png"))); // NOI18N
+        cls_myBouton6.setText("DashBoard");
+        cls_myBouton6.setFont(new java.awt.Font("Century", 0, 16)); // NOI18N
+        cls_myBouton6.setRadius(20);
+        cls_myBouton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cls_myBouton6ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/avtar-21.png"))); // NOI18N
+
+        cls_myBouton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_send_comment_32.png"))); // NOI18N
+        cls_myBouton7.setText("Dépot");
+        cls_myBouton7.setFont(new java.awt.Font("Century", 0, 20)); // NOI18N
+        cls_myBouton7.setRadius(20);
+        cls_myBouton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cls_myBouton7ActionPerformed(evt);
             }
         });
 
@@ -80,22 +117,33 @@ public class home extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cls_myBouton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cls_myBouton4, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                    .addComponent(cls_myBouton5, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))
+                    .addComponent(cls_myBouton5, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                    .addComponent(cls_myBouton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                        .addGap(9, 9, 9))
+                    .addComponent(cls_myBouton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(137, Short.MAX_VALUE)
-                .addComponent(cls_myBouton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cls_myBouton4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cls_myBouton5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(349, 349, 349))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .addGap(23, 23, 23)
+                .addComponent(cls_myBouton6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cls_myBouton3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(cls_myBouton4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cls_myBouton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cls_myBouton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(208, 208, 208))
         );
 
-        pan.setBackground(new java.awt.Color(0, 120, 215));
+        pan.setBackground(new java.awt.Color(41, 55, 72));
         pan.setLayout(new javax.swing.BoxLayout(pan, javax.swing.BoxLayout.LINE_AXIS));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -117,21 +165,27 @@ public class home extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jMenu4.setText("jMenu4");
+        jMenu4.setText("Menus");
+        jMenu4.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
 
-        jMenu5.setText("jMenu5");
-        jMenu4.add(jMenu5);
+        jMenuItem1.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
+        jMenuItem1.setText("Destination");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem1);
 
         jMenuBar1.add(jMenu4);
 
-        jMenu6.setText("jMenu6");
+        jMenu6.setText("Paramettres");
+        jMenu6.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
         jMenuBar1.add(jMenu6);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Fichier");
+        jMenu2.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
         jMenuBar1.add(jMenu2);
-
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -155,12 +209,24 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_cls_myBouton3ActionPerformed
 
     private void cls_myBouton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cls_myBouton4ActionPerformed
-        // TODO add your handling code here:
+        t.appel(new frm_marcharndise(), pan);
     }//GEN-LAST:event_cls_myBouton4ActionPerformed
 
     private void cls_myBouton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cls_myBouton5ActionPerformed
-        // TODO add your handling code here:
+        t.appel(new frm_payement(), pan);
     }//GEN-LAST:event_cls_myBouton5ActionPerformed
+
+    private void cls_myBouton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cls_myBouton6ActionPerformed
+       t.appel(new DashBorad(), pan);
+    }//GEN-LAST:event_cls_myBouton6ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        new frm_destination(this, true).show();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void cls_myBouton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cls_myBouton7ActionPerformed
+       t.appel(new frm_depot(), pan);
+    }//GEN-LAST:event_cls_myBouton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,13 +269,15 @@ public class home extends javax.swing.JFrame {
     private traitements.cls_myBouton cls_myBouton3;
     private traitements.cls_myBouton cls_myBouton4;
     private traitements.cls_myBouton cls_myBouton5;
-    private javax.swing.JMenu jMenu1;
+    private traitements.cls_myBouton cls_myBouton6;
+    private traitements.cls_myBouton cls_myBouton7;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel pan;

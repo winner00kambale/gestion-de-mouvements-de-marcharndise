@@ -126,7 +126,7 @@ public class home extends javax.swing.JFrame {
 
         texte.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
         texte.setForeground(new java.awt.Color(255, 51, 51));
-        texte.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        texte.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         texte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Male_User_32.png"))); // NOI18N
         texte.setText("Winnner");
         texte.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));

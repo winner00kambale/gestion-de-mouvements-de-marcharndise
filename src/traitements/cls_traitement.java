@@ -28,6 +28,12 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import net.proteanit.sql.DbUtils;
+import org.jdesktop.swingx.JXLabel;
+import org.jdesktop.swingx.JXPanel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 import principale.Login;
 import principale.home;
 import static principale.home.texte;
@@ -82,6 +88,18 @@ public class cls_traitement {
         } catch (Exception e) {
         }
     }
+    public void label(JLabel lbl,String col1,String col2,String table){
+        try {
+            con=DriverManager.getConnection(connexion.cls_connexion.getconnexion());
+            ps=con.prepareStatement("select "+col1+" as "+col2+" from "+table+"");
+            rs=ps.executeQuery();
+            while(rs.next()){
+                lbl.setText(rs.getString(col2));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "erreur" +e);
+        }
+    }
 
     public void affichager(JTable table, String rqt) {
         try {
@@ -105,6 +123,22 @@ public class cls_traitement {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "erreur" + e);
         }
+    }
+    public void fonction_H_F_Statistique(JXPanel Panel, JXLabel exp, JXLabel pa) {
+        try {
+
+            DefaultPieDataset dod = new DefaultPieDataset();
+            dod.setValue("Expedition", Integer.parseInt(exp.getText()));
+            dod.setValue("Payement", Integer.parseInt(pa.getText()));
+            JFreeChart jc = ChartFactory.createPieChart3D("Statistique D'expedition et Payement", dod, true, true, false);
+            ChartPanel chartPanel = new ChartPanel(jc);
+            Panel.removeAll();
+            Panel.add(chartPanel);
+            chartPanel.updateUI();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "erreur ");
+        }
+
     }
 
     public void saveClient(JLabel id, JTextField nom, JTextField post, JTextField prenom, JComboBox genre, JTextField adresse, JTextField tel) {

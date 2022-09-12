@@ -8,6 +8,7 @@ import java.awt.LayoutManager;
 import java.awt.RenderingHints;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import traitements.cls_impression;
 import traitements.cls_traitement;
 
 public class frm_depot extends javax.swing.JPanel {
@@ -50,6 +51,7 @@ public class frm_depot extends javax.swing.JPanel {
         txtquntite1 = new javax.swing.JTextField();
         Quantite = new javax.swing.JLabel();
         cls_myBouton1 = new traitements.cls_myBouton();
+        cls_myBouton2 = new traitements.cls_myBouton();
 
         jPanel1.setBackground(new java.awt.Color(41, 55, 72));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -178,6 +180,15 @@ public class frm_depot extends javax.swing.JPanel {
             }
         });
 
+        cls_myBouton2.setText("Imprimer Rapport");
+        cls_myBouton2.setFont(new java.awt.Font("Century", 0, 12)); // NOI18N
+        cls_myBouton2.setRadius(20);
+        cls_myBouton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cls_myBouton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -186,8 +197,11 @@ public class frm_depot extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cls_myBouton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(cls_myBouton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(cls_myBouton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 118, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,7 +243,11 @@ public class frm_depot extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtdesignation1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cls_myBouton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cls_myBouton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(cls_myBouton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(4, 4, 4)))
                 .addContainerGap())
         );
 
@@ -292,10 +310,19 @@ public class frm_depot extends javax.swing.JPanel {
                 + "ds on ds.id=m.refdestination where m.id not in (select tdepot.ref_marchan from tdepot) and m.designation like '%" + recherche.getText() + "%' order by m.id desc");
     }//GEN-LAST:event_rechercheKeyReleased
 
+    private void cls_myBouton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cls_myBouton2ActionPerformed
+        traitements.cls_impression i =new cls_impression();
+        try {
+            i.print("select * from affDepot", "C:\\CheminJava\\BonEntre.Jrxml");
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_cls_myBouton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Quantite;
     private traitements.cls_myBouton cls_myBouton1;
+    private traitements.cls_myBouton cls_myBouton2;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

@@ -276,6 +276,10 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (Exception e) {
+                }
                 new Login().setVisible(true);
             }
         });

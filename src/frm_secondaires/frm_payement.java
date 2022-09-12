@@ -9,6 +9,7 @@ import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import traitements.cls_impression;
 import traitements.cls_traitement;
 
 public class frm_payement extends javax.swing.JPanel {
@@ -249,8 +250,13 @@ public class frm_payement extends javax.swing.JPanel {
             }
         });
 
-        cls_myBouton3.setText("cls_myBouton1");
+        cls_myBouton3.setText("Print_Facture");
         cls_myBouton3.setRadius(20);
+        cls_myBouton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cls_myBouton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -398,6 +404,18 @@ public class frm_payement extends javax.swing.JPanel {
     private void tpayementMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tpayementMouseClicked
         t.selectPayement(tpayement, id, expedition, designation, libele, montant);        // TODO add your handling code here:
     }//GEN-LAST:event_tpayementMouseClicked
+
+    private void cls_myBouton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cls_myBouton3ActionPerformed
+       traitements.cls_impression i = new cls_impression();
+       if(id.getText().isEmpty()){
+           JOptionPane.showMessageDialog(null, "Veillez selectionner svp !!!");
+       }else{
+        try {
+            i.print("select * from aff_paye where id= '"+id.getText()+"'", "C:\\CheminJava\\Facture_marchandise.Jrxml");
+        } catch (Exception e) {
+        }
+       }
+    }//GEN-LAST:event_cls_myBouton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

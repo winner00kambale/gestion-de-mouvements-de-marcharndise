@@ -469,9 +469,12 @@
             </Component>
             <Component class="traitements.cls_myBouton" name="cls_myBouton3">
               <Properties>
-                <Property name="text" type="java.lang.String" value="cls_myBouton1"/>
+                <Property name="text" type="java.lang.String" value="Print_Facture"/>
                 <Property name="radius" type="int" value="20"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cls_myBouton3ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

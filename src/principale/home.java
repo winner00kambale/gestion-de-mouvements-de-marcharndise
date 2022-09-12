@@ -16,12 +16,13 @@ import java.awt.RenderingHints;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import traitements.cls_impression;
 import traitements.cls_traitement;
 
 public class home extends javax.swing.JFrame {
 
     traitements.cls_traitement t = new cls_traitement();
-
+    traitements.cls_impression i = new cls_impression();
     public home() {
         initComponents();
         t.appel(new DashBorad(), pan);
@@ -54,6 +55,7 @@ public class home extends javax.swing.JFrame {
         jMenu6 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         jMenu3.setText("jMenu3");
 
@@ -241,6 +243,15 @@ public class home extends javax.swing.JFrame {
 
         jMenu2.setText("Fichier");
         jMenu2.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
+
+        jMenuItem3.setText("Registre de Marchandise");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem3);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -300,6 +311,16 @@ public class home extends javax.swing.JFrame {
         new frm_user(this, true).show();        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        
+        try {
+            i.print("select * from affMarchandise", "C:\\CheminJava\\Registre_marchandise.Jrxml");
+        } catch (Exception e) {
+            System.out.println("desolee !!!");
+        }
+        
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -357,6 +378,7 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel pan;

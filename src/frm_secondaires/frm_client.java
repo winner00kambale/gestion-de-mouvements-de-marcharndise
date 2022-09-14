@@ -150,6 +150,7 @@ public class frm_client extends javax.swing.JPanel {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Photo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century", 0, 12))); // NOI18N
 
         photo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        photo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/avtar-21.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

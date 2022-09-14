@@ -168,7 +168,7 @@ public class frm_depot extends javax.swing.JPanel {
 
         Quantite.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
         Quantite.setForeground(new java.awt.Color(51, 51, 51));
-        Quantite.setText("Quantite /Kg ou Carton");
+        Quantite.setText("Quantite /Kg");
 
         cls_myBouton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_approval_32.png"))); // NOI18N
         cls_myBouton1.setText("Enregistrer");

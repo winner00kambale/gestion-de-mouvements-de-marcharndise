@@ -111,7 +111,7 @@ public class frm_marcharndise extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("Quantite");
+        jLabel4.setText("Quantite / Kg");
 
         txtdesignation.setFont(new java.awt.Font("Century", 0, 12)); // NOI18N
         txtdesignation.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));

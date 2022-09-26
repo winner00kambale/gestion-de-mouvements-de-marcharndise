@@ -204,14 +204,14 @@ public class cls_traitement {
         }
     }
 
-    public void addExpedidion(JLabel id, JTextField client, JTextField designation, JTextField qt, JTextField type, JComboBox destin) {
+    public void addExpedidion(JLabel id, JTextField client, JTextField designation, JTextField qt, JComboBox type, JComboBox destin) {
         try {
             con = DriverManager.getConnection(connexion.cls_connexion.getconnexion());
             ps = con.prepareStatement("exec sp_marchandise ?,?,?,?,?,?");
             ps.setString(1, id.getText());
             ps.setString(2, designation.getText());
             ps.setString(3, qt.getText());
-            ps.setString(4, type.getText());
+            ps.setString(4, type.getSelectedItem().toString());
             ps.setString(5, client.getText());
             ps.setString(6, destin.getSelectedItem().toString());
             ps.execute();
@@ -238,7 +238,7 @@ public class cls_traitement {
         }
     }
 
-    public void selectExpedition(JTable tab, JLabel id, JTextField client, JTextField designation, JTextField qt, JTextField type, JComboBox destin) {
+    public void selectExpedition(JTable tab, JLabel id, JTextField client, JTextField designation, JTextField qt, JComboBox type, JComboBox destin) {
         try {
             int sel = tab.getSelectedRow();
             String model = tab.getModel().getValueAt(sel, 0).toString();
@@ -246,11 +246,11 @@ public class cls_traitement {
             ps = con.prepareStatement("select * from affMarchandise where id ='" + model + "' ");
             rs = ps.executeQuery();
             while (rs.next()) {
-                id.setText(rs.getString(1));
+                id.setText(rs.getString("id"));
                 client.setText(rs.getString("noms_client"));
-                designation.setText(rs.getString(2));
-                qt.setText(rs.getString(3));
-                type.setText(rs.getString(4));
+                designation.setText(rs.getString("designation"));
+                qt.setText(rs.getString("quantite"));
+                type.setSelectedItem(rs.getString("typemarchandise"));
                 destin.setSelectedItem(rs.getString("destination"));
             }
         } catch (Exception e) {
@@ -270,6 +270,18 @@ public class cls_traitement {
             System.out.println("erreur" + e);
         }
     }
+     public void insererType(JLabel id, JTextField des) {
+        try {
+            con = DriverManager.getConnection(connexion.cls_connexion.getconnexion());
+            ps = con.prepareStatement("exec sp_type ?,?");
+            ps.setString(1, id.getText());
+            ps.setString(2, des.getText().trim());
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Mise a jour effectuee");
+        } catch (Exception e) {
+            System.out.println("erreur" + e);
+        }
+    }
 
     public void selectionDestination(JTable tab, JLabel id, JTextField des) {
         try {
@@ -277,6 +289,21 @@ public class cls_traitement {
             String model = tab.getModel().getValueAt(sel, 0).toString();
             con = DriverManager.getConnection(connexion.cls_connexion.getconnexion());
             ps = con.prepareStatement("select * from tdestination where id ='" + model + "' ");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                id.setText(rs.getString(1));
+                des.setText(rs.getString(2));
+            }
+        } catch (Exception e) {
+            System.out.println("erreur" + e);
+        }
+    }
+    public void selectionType(JTable tab, JLabel id, JTextField des) {
+        try {
+            int sel = tab.getSelectedRow();
+            String model = tab.getModel().getValueAt(sel, 0).toString();
+            con = DriverManager.getConnection(connexion.cls_connexion.getconnexion());
+            ps = con.prepareStatement("select * from ttytpe where id ='" + model + "' ");
             rs = ps.executeQuery();
             while (rs.next()) {
                 id.setText(rs.getString(1));
@@ -386,6 +413,14 @@ public class cls_traitement {
                     frm_connexion.hide();
                     h.show();
                     texte.setText(rs.getString("email"));
+                }else if("Utilisateur".equalsIgnoreCase(rs.getString("niveau"))){
+                    home h = new home();
+                    frm_connexion.hide();
+                    h.show();
+                    texte.setText(rs.getString("email"));
+                    h.users.setEnabled(false);
+                    h.destination.setEnabled(false);
+                    h.type.setEnabled(false);
                 }
             }else{
                 Login.lbltext.setText("Vérifier votre Email et PassWord");

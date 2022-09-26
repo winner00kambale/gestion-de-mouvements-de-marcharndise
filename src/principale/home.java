@@ -1,12 +1,12 @@
 package principale;
 
 import dialogues.frm_destination;
+import dialogues.frm_type;
 import dialogues.frm_user;
 import frm_secondaires.DashBorad;
 import frm_secondaires.frm_client;
 import frm_secondaires.frm_depot;
-import frm_secondaires.frm_marcharndise;
-import frm_secondaires.frm_payement;
+import frm_secondaires.tab_payement;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -23,6 +23,7 @@ public class home extends javax.swing.JFrame {
 
     traitements.cls_traitement t = new cls_traitement();
     traitements.cls_impression i = new cls_impression();
+
     public home() {
         initComponents();
         t.appel(new DashBorad(), pan);
@@ -41,7 +42,6 @@ public class home extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         cls_myBouton3 = new traitements.cls_myBouton();
         cls_myBouton4 = new traitements.cls_myBouton();
-        cls_myBouton5 = new traitements.cls_myBouton();
         cls_myBouton6 = new traitements.cls_myBouton();
         jLabel1 = new javax.swing.JLabel();
         cls_myBouton7 = new traitements.cls_myBouton();
@@ -51,9 +51,10 @@ public class home extends javax.swing.JFrame {
         pan = new RoundedPanel(50, Color.WHITE);
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        destination = new javax.swing.JMenuItem();
+        type = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        users = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
 
@@ -83,16 +84,6 @@ public class home extends javax.swing.JFrame {
         cls_myBouton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cls_myBouton4ActionPerformed(evt);
-            }
-        });
-
-        cls_myBouton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_money_bag_32.png"))); // NOI18N
-        cls_myBouton5.setText("Payement");
-        cls_myBouton5.setFont(new java.awt.Font("Century", 0, 16)); // NOI18N
-        cls_myBouton5.setRadius(20);
-        cls_myBouton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cls_myBouton5ActionPerformed(evt);
             }
         });
 
@@ -155,7 +146,6 @@ public class home extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cls_myBouton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cls_myBouton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cls_myBouton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cls_myBouton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -171,7 +161,7 @@ public class home extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGap(53, 53, 53)
                 .addComponent(cls_myBouton6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cls_myBouton3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,9 +169,7 @@ public class home extends javax.swing.JFrame {
                 .addComponent(cls_myBouton4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cls_myBouton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cls_myBouton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(texte, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -215,29 +203,38 @@ public class home extends javax.swing.JFrame {
         jMenu4.setText("Menus");
         jMenu4.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
 
-        jMenuItem1.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
-        jMenuItem1.setText("Destination");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        destination.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
+        destination.setText("Destination");
+        destination.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                destinationActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem1);
+        jMenu4.add(destination);
+
+        type.setFont(new java.awt.Font("Century", 0, 13)); // NOI18N
+        type.setText("Type Marchandise");
+        type.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                typeActionPerformed(evt);
+            }
+        });
+        jMenu4.add(type);
 
         jMenuBar1.add(jMenu4);
 
         jMenu6.setText("Paramettres");
         jMenu6.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
 
-        jMenuItem2.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Male_User_32.png"))); // NOI18N
-        jMenuItem2.setText("Utilisateurs");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        users.setFont(new java.awt.Font("Century", 0, 14)); // NOI18N
+        users.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Male_User_32.png"))); // NOI18N
+        users.setText("Utilisateurs");
+        users.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                usersActionPerformed(evt);
             }
         });
-        jMenu6.add(jMenuItem2);
+        jMenu6.add(users);
 
         jMenuBar1.add(jMenu6);
 
@@ -276,20 +273,16 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_cls_myBouton3ActionPerformed
 
     private void cls_myBouton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cls_myBouton4ActionPerformed
-        t.appel(new frm_marcharndise(), pan);
+        t.appel(new tab_payement(), pan);
     }//GEN-LAST:event_cls_myBouton4ActionPerformed
-
-    private void cls_myBouton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cls_myBouton5ActionPerformed
-        t.appel(new frm_payement(), pan);
-    }//GEN-LAST:event_cls_myBouton5ActionPerformed
 
     private void cls_myBouton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cls_myBouton6ActionPerformed
         t.appel(new DashBorad(), pan);
     }//GEN-LAST:event_cls_myBouton6ActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void destinationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_destinationActionPerformed
         new frm_destination(this, true).show();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_destinationActionPerformed
 
     private void cls_myBouton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cls_myBouton7ActionPerformed
         t.appel(new frm_depot(), pan);
@@ -297,7 +290,7 @@ public class home extends javax.swing.JFrame {
 
     private void texteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_texteMouseClicked
         if (JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment vous deconnecter???", "deconnexion", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
-            Login l= new Login();
+            Login l = new Login();
             l.show();
             this.dispose();
         }
@@ -307,19 +300,23 @@ public class home extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_heureMouseClicked
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void usersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersActionPerformed
         new frm_user(this, true).show();        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_usersActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        
+
         try {
             i.print("select * from affMarchandise", "C:\\CheminJava\\Registre_marchandise.Jrxml");
         } catch (Exception e) {
             System.out.println("desolee !!!");
         }
-        
+
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeActionPerformed
+        new frm_type(null, rootPaneCheckingEnabled).show();        // TODO add your handling code here:
+    }//GEN-LAST:event_typeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -365,9 +362,9 @@ public class home extends javax.swing.JFrame {
     private traitements.cls_myBouton cls_myBouton2;
     private traitements.cls_myBouton cls_myBouton3;
     private traitements.cls_myBouton cls_myBouton4;
-    private traitements.cls_myBouton cls_myBouton5;
     private traitements.cls_myBouton cls_myBouton6;
     private traitements.cls_myBouton cls_myBouton7;
+    public static javax.swing.JMenuItem destination;
     private javax.swing.JLabel heure;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -376,13 +373,13 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel pan;
     public static javax.swing.JLabel texte;
+    public static javax.swing.JMenuItem type;
+    public static javax.swing.JMenuItem users;
     // End of variables declaration//GEN-END:variables
 class RoundedPanel extends JPanel {
 

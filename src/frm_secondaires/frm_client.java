@@ -13,11 +13,13 @@ import traitements.cls_traitement;
 public class frm_client extends javax.swing.JPanel {
 
     traitements.cls_traitement t = new cls_traitement();
+    String phone = "+243 097...";
 
     public frm_client() {
         initComponents();
-        t.affichager(client, "select * from tclient");
+        t.affichager(client, "select * from aff_client");
         mod.setEnabled(false);
+        id.setVisible(false);
     }
     public static byte[] img12;
 
@@ -343,20 +345,34 @@ public class frm_client extends javax.swing.JPanel {
     }//GEN-LAST:event_cls_myBouton3ActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        if (nom.getText().isEmpty() || post.getText().isEmpty() || prenom.getText().isEmpty() || adresse.getText().isEmpty() || tel.getText().isEmpty()) {
+
+        if (nom.getText().isEmpty() || post.getText().isEmpty() || prenom.getText().isEmpty() || adresse.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires !!!");
+        } else if (tel.getText().isEmpty()) {
+            t.saveClient(id, nom, post, prenom, genre, adresse, phone);
+            t.affichager(client, "select * from aff_client");
         } else {
-            t.saveClient(id, nom, post, prenom, genre, adresse, tel);
-            t.affichager(client, "select * from tclient");
+            t.saveClient(id, nom, post, prenom, genre, adresse, tel.getText());
+            t.affichager(client, "select * from aff_client");
         }
 
     }//GEN-LAST:event_addActionPerformed
 
     private void modActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modActionPerformed
-        t.saveClient(id, nom, post, prenom, genre, adresse, tel);
-        t.affichager(client, "select * from tclient");
-        mod.setEnabled(false);
-        add.setEnabled(true);
+        if (id.getText().isEmpty() || nom.getText().isEmpty() || post.getText().isEmpty() || prenom.getText().isEmpty() || adresse.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires !!!");
+        } else if (tel.getText().isEmpty()) {
+            t.saveClient(id, nom, post, prenom, genre, adresse, phone);
+            t.affichager(client, "select * from aff_client");
+            mod.setEnabled(false);
+            add.setEnabled(true);
+        } else {
+            t.saveClient(id, nom, post, prenom, genre, adresse, tel.getText());
+            t.affichager(client, "select * from aff_client");
+            mod.setEnabled(false);
+            add.setEnabled(true);
+        }
+
     }//GEN-LAST:event_modActionPerformed
 
     private void clientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientMouseClicked

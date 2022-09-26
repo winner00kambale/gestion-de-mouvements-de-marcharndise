@@ -141,7 +141,7 @@ public class cls_traitement {
 
     }
 
-    public void saveClient(JLabel id, JTextField nom, JTextField post, JTextField prenom, JComboBox genre, JTextField adresse, JTextField tel) {
+    public void saveClient(JLabel id, JTextField nom, JTextField post, JTextField prenom, JComboBox genre, JTextField adresse, String tel) {
         try {
             con = DriverManager.getConnection(connexion.cls_connexion.getconnexion());
             ps = con.prepareStatement("exec sp_client ?,?,?,?,?,?,?,?");
@@ -151,7 +151,7 @@ public class cls_traitement {
             ps.setString(4, prenom.getText());
             ps.setString(5, genre.getSelectedItem().toString());
             ps.setString(6, adresse.getText());
-            ps.setString(7, tel.getText());
+            ps.setString(7, tel);
             ps.setBytes(8, frm_client.img12);
             ps.execute();
             JOptionPane.showMessageDialog(null, "Operation reussi avec succes");
@@ -160,7 +160,6 @@ public class cls_traitement {
             post.setText("");
             prenom.setText("");
             adresse.setText("");
-            tel.setText("");
             photo.setIcon(null);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erreur" + e);
